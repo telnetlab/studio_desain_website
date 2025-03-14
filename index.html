@@ -93,10 +93,55 @@
             <td>2</td>
         </tr>
     </table>
-    
-    <h2>7. Menyisipkan Gambar</h2>
+
+    <h2>7. Formulir Input</h2>
+    <form action="#" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <label>Jenis Kelamin:</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Laki-laki</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Perempuan</label>
+        <br><br>
+
+        <label for="hobby">Hobi:</label>
+        <input type="checkbox" id="hobby1" name="hobby" value="rebahan">
+        <label for="hobby1">Rebahan</label>
+        <input type="checkbox" id="hobby2" name="hobby" value="gaming">
+        <label for="hobby2">Mabar</label>
+        <input type="checkbox" id="hobby3" name="hobby" value="scrolling">
+        <label for="hobby3">Scroll Sosmed</label>
+        <br><br>
+
+        <label for="country">Negara:</label>
+        <select id="country" name="country">
+            <option value="indonesia">Indonesia</option>
+            <option value="malaysia">China</option>
+            <option value="singapore">Russia</option>
+            <option value="thailand">United States</option>
+        </select>
+        <br><br>
+
+        <label for="comments">Komentar:</label>
+        <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Tulis komentar di sini..."></textarea>
+        <br><br>
+
+        <input type="submit" value="Kirim">
+        <input type="reset" value="Reset">
+    </form>
+
+    <h2>8. Menyisipkan Gambar</h2>
     <p>Untuk menyisipkan gambar, gunakan tag &lt;img&gt;.</p>
     <img src="https://avatars.githubusercontent.com/u/203100969?v=4" alt="Contoh Gambar">
+
+    <footer>&copy; 2025 Telecommunication Network Laboratory. Fakultas Ilmu Terapan. Telkom University.</footer>
     
 </body>
 </html>
