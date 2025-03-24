@@ -22,7 +22,12 @@ XAMPP adalah perangkat lunak open-source yang digunakan untuk membuat server lok
 - **P (Perl)**: Bahasa pemrograman tambahan yang digunakan untuk kebutuhan scripting.
 
 ### PHP (Hypertext Preprocessor)
-PHP adalah bahasa skrip sumber terbuka yang dirancang khusus untuk pengembangan web dan dapat disematkan dalam HTML. Dikembangkan awalnya oleh Rasmus Lerdorf pada tahun 1994, PHP kini dikelola oleh The PHP Group dan menjadi salah satu bahasa pemrograman server-side paling populer di dunia.
+PHP adalah bahasa skrip sumber terbuka yang dirancang khusus untuk pengembangan web dan dapat disematkan dalam HTML. Dikembangkan awalnya oleh Rasmus Lerdorf pada tahun 1994, PHP kini dikelola oleh The PHP Group dan menjadi salah satu bahasa pemrograman server-side paling populer di dunia. PHP memiliki beberapa fungsi utama, yaitu:
+
+1. Memproses dan menampilkan konten dinamis dalam sebuah situs web.
+2. Mengelola data dari formulir dan sesi pengguna.
+3. Berinteraksi dengan database seperti MySQL dan PostgreSQL.
+4. Menghasilkan dan mengedit file seperti gambar, PDF, dan XML.
 
 PHP pertama kali muncul sebagai sekumpulan skrip Perl yang dibuat oleh Rasmus Lerdorf untuk memantau kunjungan ke resume onlinenya, yang disebut "Personal Home Page Tools" (PHP Tools). Versi publik pertama dirilis pada 1995 (PHP/FI). Pada 1997, Zeev Suraski dan Andi Gutmans menulis ulang parser PHP, menciptakan PHP 3.0, yang menjadi fondasi bahasa modern. Versi utama terkini adalah PHP 8.x, dirilis dengan fitur seperti JIT compiler dan union types.
 
