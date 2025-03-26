@@ -9,8 +9,8 @@
 Alat & Bahan yang digunakan adalah sebagai berikut:
 1. Sistem Operasi Windows, Linux, atau MacOS
 2. PHP 8.x
-3. Software XAMPP atau LAMPP
-4. Text Editor
+3. Perangkat lunak XAMPP
+4. Editor teks
 
 ## Dasar Teori
 ### XAMPP
@@ -29,6 +29,7 @@ PHP adalah bahasa skrip sumber terbuka yang dirancang khusus untuk pengembangan 
 3. Berinteraksi dengan database seperti MySQL dan PostgreSQL.
 4. Menghasilkan dan mengedit file seperti gambar, PDF, dan XML.
 
+### Sejarah PHP
 PHP pertama kali muncul sebagai sekumpulan skrip Perl yang dibuat oleh Rasmus Lerdorf untuk memantau kunjungan ke resume onlinenya, yang disebut "Personal Home Page Tools" (PHP Tools). Versi publik pertama dirilis pada 1995 (PHP/FI). Pada 1997, Zeev Suraski dan Andi Gutmans menulis ulang parser PHP, menciptakan PHP 3.0, yang menjadi fondasi bahasa modern. Versi utama terkini adalah PHP 8.x, dirilis dengan fitur seperti JIT compiler dan union types.
 
 ### Syarat Menjalankan PHP
@@ -77,17 +78,53 @@ $namaVariabel = "Nilai";
 4. Boolean: `true` atau `false`
 
 ### Tipe Data Komposit
-1. Array: Koleksi nilai terindeks:
+1. Array indeks menggunakan indeks numerik untuk mengakses elemen-elemennya.
 
-```php
-$array = [1, 2, "tiga"];
-```
+    ```php
+    $arrayIndeks = [1, 2, "tiga"];
+    echo "Elemen pertama: " . $arrayIndeks[0] . "\n"; // Output: Elemen pertama: 1
+    echo "Elemen kedua: " . $arrayIndeks[1] . "\n";  // Output: Elemen kedua: 2
+    echo "Elemen ketiga: " . $arrayIndeks[2] . "\n"; // Output: Elemen ketiga: tiga
+    ```
 
-2. Object: Instansiasi kelas.
+2. Array asosiatif menggunakan kunci (key) yang dapat berupa string untuk mengakses elemen-elemennya.
+
+    ```php
+    $arrayAsosiatif = [
+        "nama" => "Risnanda",
+        "umur" => 20,
+        "kota" => "Bandung"
+    ];
+
+    echo "Nama: " . $arrayAsosiatif["nama"] . "\n"; // Output: Nama: Risnanda
+    echo "Umur: " . $arrayAsosiatif["umur"] . "\n"; // Output: Umur: 20
+    echo "Kota: " . $arrayAsosiatif["kota"] . "\n"; // Output: Kota: Jakarta
+    ```
+
+3. Objek adalah tipe data yang dibuat dari sebuah kelas. Berikut adalah contoh kelas dan cara membuat objek darinya.
+
+    ```php
+    class Mobil {
+        public $merk;
+        public $tahun;
+
+        public function __construct($merk, $tahun) {
+            $this->merk = $merk;
+            $this->tahun = $tahun;
+        }
+
+        public function info() {
+            return "Mobil: " . $this->merk . ", Tahun: " . $this->tahun;
+        }
+    }
+
+    $mobilSaya = new Mobil("Toyota", 2025);
+    echo $mobilSaya->info(); // Output: Mobil: Toyota, Tahun: 2025
+    ```
 
 ### Tipe Data Khusus
-1. NULL: Menunjukkan ketiadaan nilai.
-2. Resource: Referensi ke sumber eksternal (e.g., koneksi database).
+1. **NULL**: Dalam PHP, sebuah variabel yang diatur ke NULL berarti variabel tersebut tidak memiliki nilai yang terdefinisi. NULL sering digunakan untuk menandakan bahwa variabel belum diinisialisasi atau tidak memiliki nilai yang valid.
+2. **Resource**: Tipe data ini merupakan referensi ke sumber eksternal, seperti koneksi ke database, file, atau layanan jaringan. Resource digunakan untuk mengelola dan berinteraksi dengan sumber daya di luar memori program, memungkinkan PHP untuk melakukan operasi yang memerlukan akses ke data atau layanan eksternal. Resource biasanya dihasilkan oleh fungsi tertentu dan tidak dapat diubah secara langsung.
 
 ## Operator
 ### Aritmatika
@@ -112,17 +149,20 @@ $array = [1, 2, "tiga"];
 | <= | Lebih kecil atau sama dengan | 4 <= 5 | True |
 
 ### Logika
-- `&&` (AND), `||` (OR), `!` (NOT).
+- `&&` (AND): Mengembalikan nilai true jika kedua operandnya true.
+- `||` (OR): Mengembalikan nilai true jika salah satu atau kedua operandnya true.
+- `!` (NOT): Membalikkan nilai boolean dari operandnya, mengembalikan true jika operandnya false, dan sebaliknya.
 
 ### Penggabungan String
 Menggunakan operator `.`:
 
 ```php
-$nama = "John" . " " . "Doe"; // "John Doe"
+$nama = "Risnanda" . " " . "Pascal"; // "Risnanda Pascal"
 ```
 
 ## Struktur Kontrol
-1. if-elseif-else:
+### if-elseif-else
+Struktur percabangan yang digunakan untuk menjalankan kode berdasarkan suatu kondisi. Jika kondisi dalam `if` terpenuhi (true), maka kode di dalamnya akan dijalankan. Jika tidak, maka kode dalam `else` akan dieksekusi sebagai alternatif.
 
 ```php
 if ($x > 0) {
@@ -134,7 +174,8 @@ if ($x > 0) {
 }
 ```
 
-2. switch:
+### switch
+Struktur percabangan yang digunakan untuk memeriksa nilai sebuah variabel dan menjalankan perintah berdasarkan kondisi yang sesuai. Switch lebih efisien dibandingkan `if-else` ketika ada banyak kemungkinan nilai yang harus diperiksa.
 
 ```php
 switch ($hari) {
@@ -147,7 +188,8 @@ switch ($hari) {
 ```
 
 ## Perulangan 
-1. for:
+### for
+Digunakan ketika jumlah perulangan sudah diketahui.
 
 ```php
 for ($i = 0; $i < 5; $i++) {
@@ -155,7 +197,9 @@ for ($i = 0; $i < 5; $i++) {
 }
 ```
 
-2. while:
+### while
+Digunakan ketika jumlah perulangan tidak diketahui dan bergantung pada
+kondisi tertentu.
 
 ```php
 while ($kondisi) {
@@ -163,7 +207,8 @@ while ($kondisi) {
 }
 ```
 
-3. foreach (untuk array):
+### foreach (untuk array)
+Digunakan khusus untuk mengulang setiap elemen dalam array.
 
 ```php
 foreach ($buah as $item) {
@@ -173,6 +218,7 @@ foreach ($buah as $item) {
 
 ## Fungsi
 ### Deklarasi Fungsi
+Deklarasi fungsi dalam PHP adalah pernyataan yang digunakan untuk mendefinisikan sebuah `function`, yang merupakan blok kode yang dapat dipanggil untuk menjalankan serangkaian instruksi tertentu.
 
 ```php
 function hitungLuas($panjang, $lebar) {
@@ -211,6 +257,7 @@ $username = htmlspecialchars($_POST['username']); // Mencegah XSS
 
 ## Interaksi Database (MySQLi)
 ### Koneksi ke MySQL
+Koneksi ke MySQL diperlukan agar PHP dapat berkomunikasi dengan database. Dalam PHP, koneksi bisa dibuat menggunakan MySQLi.
 
 ```php
 $koneksi = new mysqli("localhost", "user", "password", "database");
@@ -220,6 +267,7 @@ if ($koneksi->connect_error) {
 ```
 
 ### Query Aman dengan Prepared Statements
+Prepared Statements adalah cara aman untuk menjalankan query dengan cara memisahkan perintah SQL dari data yang dikirimkan pengguna.
 
 ```php
 $stmt = $koneksi->prepare("INSERT INTO users (email) VALUES (?)");
@@ -229,6 +277,7 @@ $stmt->execute();
 
 ## Penanganan Kesalahan
 ### Exception Handling
+Exeption Handling adalah mekanisme dalam pemrograman yang memungkinkan pengembang untuk menangani kesalahan atau kondisi tidak terduga yang terjadi selama eksekusi program.
 
 ```php
 try {
@@ -241,6 +290,7 @@ try {
 ```
 
 ### Error Reporting
+Dalam PHP, fungsi `error_reporting(E_ALL);` digunakan untuk menampilkan semua jenis kesalahan, sementara `ini_set('display_errors', 1);` mengatur agar kesalahan ditampilkan di layar, yang berguna untuk tujuan debugging selama pengembangan.
 
 ```php
 error_reporting(E_ALL); // Menampilkan semua error
@@ -251,30 +301,26 @@ ini_set('display_errors', 1);
 
 1. Validasi Input:
 
-```php
-$email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
-```
+    ```php
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    ```
 
-2. Mencegah SQL Injection: Gunakan prepared statements (MySQLi atau PDO).
+2. Gunakan prepared statements (MySQLi atau PDO) untuk mencegah SQL Injection.
 3. Mencegah XSS:
 
-```php
-echo htmlspecialchars($input_pengguna);
-```
+    ```php
+    echo htmlspecialchars($input_pengguna);
+    ```
 
 ## Manajemen Sesi
+Manajemen sesi di PHP adalah mekanisme yang digunakan untuk menyimpan dan mengelola data pengguna selama interaksi mereka dengan aplikasi web. Sesi memungkinkan penyimpanan informasi yang dapat diakses di berbagai halaman tanpa perlu mengirimkan data tersebut melalui URL atau formulir.
 
 ```php
 session_start();
-$_SESSION['pengguna'] = "John"; // Menyimpan data sesi
+$_SESSION['pengguna'] = "rical"; // Menyimpan data sesi
 session_unset(); // Menghapus semua variabel sesi
 session_destroy(); // Menghancurkan sesi
 ```
-
-## Standar Pengodean
-PHP mengikuti PSR (PHP Standards Recommendations) untuk konsistensi kode, seperti:
-- PSR-1: Standar penulisan dasar.
-- PSR-12: Gaya penulisan kode ekstensif.
 
 ## Praktikum: Membuat Sistem Login Sederhana Menggunakan PHP
 ### Struktur File
@@ -294,17 +340,17 @@ PHP mengikuti PSR (PHP Standards Recommendations) untuk konsistensi kode, sepert
 1. Pastikan XAMPP/WAMP/MAMP sudah berjalan
 2. Jalankan query berikut di phpMyAdmin atau CLI MySQL untuk membuat database:
 
-```php
-CREATE DATABASE login_system;
-USE login_system;
+    ```php
+    CREATE DATABASE login_system;
+    USE login_system;
 
-CREATE TABLE users (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  username VARCHAR(50) UNIQUE NOT NULL,
-  email VARCHAR(100) UNIQUE NOT NULL,
-  password VARCHAR(255) NOT NULL
-);
-```
+    CREATE TABLE users (
+      id INT PRIMARY KEY AUTO_INCREMENT,
+      username VARCHAR(50) UNIQUE NOT NULL,
+      email VARCHAR(100) UNIQUE NOT NULL,
+      password VARCHAR(255) NOT NULL
+    );
+    ```
 
 3. Simpan semua file di folder `htdocs/login-system`
 4. Akses melalui browser:
