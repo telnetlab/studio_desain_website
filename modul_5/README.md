@@ -340,7 +340,7 @@ session_destroy(); // Menghancurkan sesi
 1. Pastikan XAMPP/WAMP/MAMP sudah berjalan
 2. Jalankan query berikut di phpMyAdmin atau CLI MySQL untuk membuat database:
 
-    ```php
+    ```mysql
     CREATE DATABASE login_system;
     USE login_system;
 

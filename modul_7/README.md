@@ -105,7 +105,7 @@ Relasi One-to-Many adalah hubungan di mana satu baris dalam tabel A dapat terkai
 
 ![1:M](/modul_7/img/one-to-many.png)
 
-Tabel `penjual` dengan Primary Key `id_penjual` berelasi 1:N dengan `tabel produk`. Satu penjual dapat menjual banyak produk, tetapi setiap produk hanya terdaftar di bawah satu penjual
+Tabel `penjual` dengan Primary Key `id_penjual` berelasi 1:N dengan tabel `produk`. Satu penjual dapat menjual banyak produk, tetapi setiap produk hanya terdaftar di bawah satu penjual
 
 #### c. Relasi Many-to-Many (M:M)
 Relasi Many-to-Many adalah hubungan di mana banyak baris dalam tabel A dapat terkait dengan banyak baris dalam tabel B. Untuk mengimplementasikan relasi ini, diperlukan tabel perantara (junction table) yang menyimpan Foreign Key dari kedua tabel.

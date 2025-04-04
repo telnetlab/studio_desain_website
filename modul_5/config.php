@@ -4,9 +4,11 @@ $user = "root";
 $password = "";
 $database = "login_system";
 
-$conn = new mysqli($host, $user, $password, $database);
+$koneksi = new mysqli($host, $user, $password, $database);
 
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
+if ($koneksi->connect_error) {
+    die("Koneksi gagal: " . $koneksi->connect_error);
 }
+
+session_start();
 ?>
