@@ -40,22 +40,22 @@ DML adalah sub perintah dalam bahasa SQL yang digunakan untuk memanipulasi data 
 Contoh query untuk masing-masing perintah di atas adalah sebagai berikut:
 
 1. **INSERT**
-    ```mysql
+    ```sql
     INSERT INTO mahasiswa_t (nama, nim, email) VALUES ('rical', '607052300001', 'rical@telnet.net');
     ```
 
 2. **SELECT**
-    ```mysql
+    ```sql
     SELECT nama, nim, email FROM mahasiswa_t;
     ```
 
 3. **UPDATE**
-    ```mysql
+    ```sql
     UPDATE mahasiswa_t SET nama = 'Pascal', nim = '607052300002', email = 'pascal@telnet.net' WHERE nama = 'rical';
     ```
 
 4. **DELETE**
-    ```mysql
+    ```sql
     DELETE FROM mahasiswa_t WHERE email = 'pascal@telnet.net';
     ```
 
@@ -120,7 +120,7 @@ Untuk mengambil data dari tabel yang saling berelasi dalam SQL, digunakan operas
 #### 1. INNER JOIN
 INNER JOIN menggabungkan baris dari dua tabel hanya jika nilai kolom penghubung (key) memenuhi kondisi yang ditentukan. Baris tanpa pasangan di kedua tabel tidak akan ditampilkan.
 
-```mysql
+```sql
 SELECT m.*, k.*  
 FROM mahasiswa_t m  
 INNER JOIN kelas_t k ON m.kelas_id = k.id;  
@@ -129,7 +129,7 @@ INNER JOIN kelas_t k ON m.kelas_id = k.id;
 #### 2. LEFT JOIN
 LEFT JOIN menampilkan semua baris dari tabel kiri (tabel pertama), dan baris yang cocok dari tabel kanan (tabel kedua). Jika tidak ada pasangan, kolom dari tabel kanan akan berisi nilai NULL.
 
-```mysql
+```sql
 SELECT m.*, k.*  
 FROM mahasiswa_t m  
 LEFT JOIN kelas_t k ON m.kelas_id = k.id;  
@@ -138,7 +138,7 @@ LEFT JOIN kelas_t k ON m.kelas_id = k.id;
 #### 3. RIGHT JOIN
 RIGHT JOIN menampilkan semua baris dari tabel kanan (tabel kedua), dan baris yang cocok dari tabel kiri. Jika tidak ada pasangan, kolom dari tabel kiri akan berisi nilai NULL.
 
-```mysql
+```sql
 SELECT m.*, k.*  
 FROM mahasiswa_t m  
 RIGHT JOIN kelas_t k ON m.kelas_id = k.id;  
@@ -147,7 +147,7 @@ RIGHT JOIN kelas_t k ON m.kelas_id = k.id;
 #### 4. FULL JOIN
 FULL JOIN menampilkan semua baris dari kedua tabel, dengan nilai NULL di kolom yang tidak memiliki pasangan. Catatan: MySQL tidak mendukung sintaks FULL JOIN secara native. Untuk meniru perilaku ini, gunakan kombinasi LEFT JOIN dan RIGHT JOIN dengan klausa UNION:
 
-```mysql
+```sql
 SELECT m.*, k.*  
 FROM mahasiswa_t m  
 LEFT JOIN kelas_t k ON m.kelas_id = k.id  
@@ -215,7 +215,7 @@ Terdapat beberapa perintah yang dapat digunakan untuk mengambil record dari suat
 2. Klik `New` untuk membuat database baru
 
 #### Eksekusi SQL
-```mysql
+```sql
 -- Buat database
 CREATE DATABASE todo_app;
 
@@ -396,7 +396,7 @@ $mysqli->close();
 
 ### Langkah 5: Menambahkan Relasi Database
 #### Tambah Tabel Users
-```mysql
+```sql
 CREATE TABLE users (
   id INT PRIMARY KEY AUTO_INCREMENT,
   username VARCHAR(50) UNIQUE NOT NULL,
