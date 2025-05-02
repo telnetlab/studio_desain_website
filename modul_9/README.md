@@ -1,10 +1,15 @@
-## Praktikum: Membuat Halaman CRUD Produk/Barang
-### 1. Instalasi Laravel & Setup Database
+## Praktikum: Pembuatan Halaman CRUD Produk/Barang dengan Laravel
+
+**CRUD (Create, Read, Update, Delete)** merupakan operasi dasar dalam pengembangan aplikasi web untuk mengelola data. Dokumentasi ini menjelaskan implementasi CRUD produk/barang menggunakan framework PHP Laravel.
+
+## Implementasi
+### 1. Instalasi dan Konfigurasi Awal
+Buat projek Laravel baru dengan perintah berikut:
 ```bash
 composer create-project laravel/laravel modul-laravel && cd modul-laravel
 ```
 
-Buka file `.env` dan konfigurasi database:
+Konfigurasi koneksi basis data pada file `.env`:
 
 ```ini
 DB_CONNECTION=mysql
@@ -15,12 +20,13 @@ DB_USERNAME=phpmyadmin
 DB_PASSWORD=phpmyadmin
 ```
 
-### 2. Membuat Model, Migration, dan Controller
+### 2. Pembuatan Model dan Migrasi
+Generate model, migrasi, dan controller sekaligus menggunakan `artisan`:
 ```bash
 php artisan make:model Product -mcr
 ```
 
-Buka file migration yang baru dibuat di `database/migrations/xxx_create_products_table.php`:
+Definisikan skema tabel pada file migrasi `database/migrations/xxx_create_products_table.php`:
 ```php
 public function up()
 {
@@ -35,21 +41,21 @@ public function up()
 }
 ```
 
-### 3. Jalankan Migration
+### 3. Eksekusi Migrasi
 ```bash
 php artisan migrate
 ```
 
-### 4. Buat Route
-Tambahkan di `routes/web.php`:
+### 4. Konfigurasi Routing
+Tambahkan resource route di `routes/web.php`:
 ```php
 use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);
 ```
 
-### 5. Buat Controller
-Buka `app/Http/Controllers/ProductController.php`:
+### 5. Implementasi Controller
+Method utama dalam `app/Http/Controllers/ProductController.php`:
 ```php
 public function index()
 {
@@ -105,8 +111,16 @@ public function destroy(Product $product)
 }
 ```
 
-### 6. Buat Views
-Buat folder `resources/views/products` dan buat file:
+### 6. Pembuatan View
+Buat folder `resources/views/products`. Struktur file:
+```
+/resources/views/products
+├── index.blade.php
+├── create.blade.php
+├── edit.blade.php
+├── show.blade.php
+```
+
 - `index.blade.php`:
     ```php
     @extends('layouts.app')
@@ -268,7 +282,7 @@ Buat folder `resources/views/products` dan buat file:
     @endsection
     ```
 
-### 7. Buat Layout Utama
+### 7. Layout Utama
 Buat `resources/views/layouts/app.blade.php`:
 ```php
 <!DOCTYPE html>
@@ -285,57 +299,50 @@ Buat `resources/views/layouts/app.blade.php`:
 </html>
 ```
 
-### 8. Jalankan Aplikasi
+### 8. Menjalankan Aplikasi
 ```bash
 php artisan serve
 ```
 
-Buka browser ke [http://localhost:8000/products](http://localhost:8000/products)
+Akses melalui browser di [http://localhost:8000/products](http://localhost:8000/products).
 
 ## Troubleshoting
 ### Mass Assignment Protection
-```
-Illuminate\Database\Eloquent\MassAssignmentException
-Add [_token] to fillable property to allow mass assignment on [App\Models\Product].
-```
+**Error**: Illuminate\Database\Eloquent\MassAssignmentException
 
 Error ini terjadi karena Laravel memiliki fitur mass assignment protection. Saat kita menggunakan `create()` atau `update()` dengan array data dari request, kita harus menentukan field mana saja yang boleh diisi secara massal.
 
-1. Buka Model Product (`app/Models/Product.php`)
-2. Tambahkan properti `$fillable`:
-    ```php
-    <?php
-
-    namespace App\Models;
-
-    use Illuminate\Database\Eloquent\Factories\HasFactory;
-    use Illuminate\Database\Eloquent\Model;
-
-    class Product extends Model
-    {
-        use HasFactory;
-
-        protected $fillable = [
-            'name', 
-            'description', 
-            'price', 
-            'stock'
-        ];
-    }
-    ```
-
-### Undefined variable `$i`
-Variabel `$i` yang digunakan untuk nomor urut tidak didefinisikan/dikirim dari controller ke view. Ubah baris ini di `index.blade.php`:
+**Solusi**:
+Tambahkan properti `$fillable` pada model Product: (`app/Models/Product.php`)
 ```php
-<td>{{ ++$i }}</td>
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Product extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name', 
+        'description', 
+        'price', 
+        'stock'
+    ];
+}
 ```
 
-Menjadi:
-```php
-<td>{{ $loop->iteration }}</td>
-```
+### Variabel Tidak Terdefinisi
+**Error**: Undefined variable `$i`
+
+Variabel `$i` yang digunakan untuk nomor urut tidak didefinisikan/dikirim dari controller ke view. 
+
+**Solusi**: Ganti `<td>{{ ++$i }}</td>` dengan `<td>{{ $loop->iteration }}</td>` pada view `index.blade.php`:
 
 ## Credits
-- Pengembang modul: [Feby Purba Christiani]() & [Risnanda Pascal](https://tel-u.ac.id/ricalnet)
+- Pengembang modul: [Feby Christiani Purba]() & [Risnanda Pascal](https://tel-u.ac.id/ricalnet)
 - Telecommunication Network Laboratory: [Web Design](https://telnetlab.github.io/web-design/index.html)
 - SAS Telkom University: [D3 Teknologi Telekomunikasi](https://io.telkomuniversity.ac.id/degree-program/faculty-of-telkom-applied-science/telecommunication-engineering/)
