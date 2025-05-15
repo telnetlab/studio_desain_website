@@ -1,4 +1,4 @@
-# Modul 9 - LARAVEL
+# Modul 9: LARAVEL
 
 ### 9.1 Tujuan Praktikum
 1. Praktikan dapat mengetahui dan memahami apa itu Framework Laravel.  
